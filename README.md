@@ -2,7 +2,7 @@
 
 To hide the Zorin logo while booting:
 
-1. Download the this repo [as a zip](https://github.com/TheJaredWilcurt/hide-zorin-boot-logo/archive/refs/heads/main.zip)
+1. Download this repo [as a zip](https://github.com/TheJaredWilcurt/hide-zorin-boot-logo/archive/refs/heads/main.zip)
 1. Pull out the files in the "blank" folder and drop them into:
    * `/usr/share/plymouth/themes/zorin-logo`
    * Replace the contents of the folder with the files from the "blank" folder
