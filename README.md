@@ -7,6 +7,7 @@ To hide the Zorin logo while booting:
    * `/usr/share/plymouth/themes/zorin-logo`
    * Replace the contents of the folder with the files from the "blank" folder
 1. Run `sudo update-initramfs -u`
+1. Reboot to see the changes
 
 
 ## How to copy files to a locked folder?
