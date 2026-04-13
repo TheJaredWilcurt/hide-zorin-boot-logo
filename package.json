@@ -1,0 +1,35 @@
+{
+  "name": "hide-zorin-boot-logo",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "vite"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.5",
+    "vite": "^8.0.8",
+    "vue": "^3.5.32"
+  },
+  "author": "TheJaredWilcurt",
+  "license": "MIT",
+  "description": "To hide the Zorin logo while booting:",
+  "homepage": "https://github.com/TheJaredWilcurt/hide-zorin-boot-logo#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheJaredWilcurt/hide-zorin-boot-logo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TheJaredWilcurt/hide-zorin-boot-logo/issues"
+  },
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "25.9.0"
+    },
+    "packageManager": {
+      "name": "npm",
+      "version": "11.12.1"
+    }
+  }
+}
