@@ -16,14 +16,32 @@
         color: #EEE;
         font-family: sans-serif;
       }
-      #app {
-        text-align: center;
+      a,
+      a:link,
+      a:visited {
+        color: #CCF;
+      }
+      a:hover,
+      a:active {
+        color: #FFF;
       }
       label {
         display: block;
       }
+      code {
+        display: inline-block;
+        background: #222;
+        border: 1px solid #444;
+        border-radius: 20px;
+        padding: 2px 8px;
+        vertical-align: middle;
+      }
+      #app {
+        text-align: center;
+      }
       .controls {
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-around;
         margin: 1rem;
       }
@@ -54,16 +72,32 @@
         animation-iteration-count: infinite;
         animation-duration: 3.2s;
       }
+      .instructions {
+        width: 100%;
+        max-width: 800px;
+        margin: 0px auto;
+        text-align: left;
+      }
+      .github-link {
+        display: inline-block;
+        margin: 1rem;
+        color: #EEE;
+      }
+      .github-logo {
+        width: 48px;
+        height: 48px;
+      }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/vue@3.5.32/dist/vue.global.prod.js"></script>
   </head>
   <body>
     <div id="app">
-      <component
-        :is="'style'"
-      >
+      <component :is="'style'">
         {{ keyframes }}
       </component>
+      <h1>
+        Change boot animation
+      </h1>
       <div class="controls">
         <div>
           <label for="screen-size">Simulated Screen Size:</label>
@@ -134,6 +168,124 @@
           ></div>
         </div>
       </div>
+
+      <div class="instructions">
+        <div>
+          <h2>
+            To change the Zorin logo shown while booting up:
+          </h2>
+          <ol>
+            <li>
+              Download this repo
+              <a href="https://github.com/TheJaredWilcurt/hide-zorin-boot-logo/archive/refs/heads/main.zip">as a zip</a>.
+            </li>
+            <li>
+              Pull out the files in the "blank" folder and drop them into:
+              <ul>
+                <li>
+                  <code>/usr/share/plymouth/themes/zorin-logo</code>
+                </li>
+                <li>
+                  Replace the contents of the folder with the files from the "{{ os }}" folder
+                </li>
+              </ul>
+            </li>
+            <li>
+              Run <code>sudo update-initramfs -u</code>
+            </li>
+            <li>
+              Reboot to see the changes
+            </li>
+          </ol>
+        </div>
+
+        <div>
+          <h2>
+            How to copy files to a locked folder?
+          </h2>
+          <p>
+            You'll need root permission.
+            I installed a different file explorer called "Thunar".
+            Then ran in the terminal <code>sudo thunar</code> to open it with root permissions.
+            Then I navigated to the "{{ os }}" folder, select all, right-click > cut,
+            then navigated to the
+            <code>/usr/share/plymouth/themes/zorin-logo</code>
+            folder and pasted them, saying "Replace all".
+            After that you can close Thunar.
+            Then run <code>sudo update-initramfs -u</code>
+            to apply the changes and reboot.
+          </p>
+        </div>
+
+        <div>
+          <h2>
+            Reverting the changes
+          </h2>
+          <p>
+            If you want the Zorin logo back, do the exact same steps, but use the files in the "original" folder instead.
+          </p>
+        </div>
+
+        <div>
+          <h2>
+            Creating custom animations
+          </h2>
+          <p>
+            You can also create any custom animations you want.
+          </p>
+          <ul>
+            <li>
+              The images must be exactly 556x140px.
+            </li>
+            <li>
+              The logo needs exactly 37 frames,
+              named <code>animation-00.png</code> - <code>animation-36.png</code>.
+            </li>
+            <li>
+              The throbber needs exactly 39 frames,
+              named <code>throbber-00.png</code> - <code>throbber-38.png</code>.
+            </li>
+          </ul>
+          <p>
+            If you've created something you think others might also like, it can be added to this repo:
+          </p>
+          <ul>
+            <li>
+              Images must be losslessly compressed. Use <a href="https://nikkhokkho.sourceforge.io/?page=FileOptimizer">FileOptimizer</a> with optimization level set to <code>9: Best</code>. This is a Windows program, but installs on Zorin without any issues.
+            </li>
+            <li>
+              Create a
+              <a href="https://github.com/TheJaredWilcurt/hide-zorin-boot-logo/pulls">pull request</a>
+              against the repo, or create an
+              <a href="https://github.com/TheJaredWilcurt/hide-zorin-boot-logo/issues/new">issue</a>
+              with the images attached in a zip.
+            </li>
+            <li>
+              If your images are not compressed correctly in your PR, I'll download them, compress them and create a new PR, closing yours out.
+            </li>
+            <li>
+              I'll also update the webpage to add the images.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <a
+        class="github-link"
+        href="https://github.com/TheJaredWilcurt/hide-zorin-boot-logo"
+      >
+        <svg
+          class="github-logo"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12 1C5.9225 1 1 5.9225 1 12C1 16.8675 4.14875 20.9787 8.52125 22.4362C9.07125 22.5325 9.2775 22.2025 9.2775 21.9137C9.2775 21.6525 9.26375 20.7862 9.26375 19.865C6.5 20.3737 5.785 19.1912 5.565 18.5725C5.44125 18.2562 4.905 17.28 4.4375 17.0187C4.0525 16.8125 3.5025 16.3037 4.42375 16.29C5.29 16.2762 5.90875 17.0875 6.115 17.4175C7.105 19.0812 8.68625 18.6137 9.31875 18.325C9.415 17.61 9.70375 17.1287 10.02 16.8537C7.5725 16.5787 5.015 15.63 5.015 11.4225C5.015 10.2262 5.44125 9.23625 6.1425 8.46625C6.0325 8.19125 5.6475 7.06375 6.2525 5.55125C6.2525 5.55125 7.17375 5.2625 9.2775 6.67875C10.1575 6.43125 11.0925 6.3075 12.0275 6.3075C12.9625 6.3075 13.8975 6.43125 14.7775 6.67875C16.8813 5.24875 17.8025 5.55125 17.8025 5.55125C18.4075 7.06375 18.0225 8.19125 17.9125 8.46625C18.6138 9.23625 19.04 10.2125 19.04 11.4225C19.04 15.6437 16.4688 16.5787 14.0213 16.8537C14.42 17.1975 14.7638 17.8575 14.7638 18.8887C14.7638 20.36 14.75 21.5425 14.75 21.9137C14.75 22.2025 14.9563 22.5462 15.5063 22.4362C19.8513 20.9787 23 16.8537 23 12C23 5.9225 18.0775 1 12 1Z"
+          />
+          <title>GitHub Logo</title>
+        </svg>
+      </a>
+
     </div>
     <script>
       Vue.createApp({
@@ -149,7 +301,8 @@
         methods: {
           titleCase: function (value) {
             const custom = {
-              hp: 'HP'
+              hp: 'HP',
+              original: 'Zorin'
             };
             if (custom[value]) {
               return custom[value];
@@ -164,13 +317,23 @@
           loadImage: function (url) {
             return new Promise((resolve, reject) => {
               const image = new Image();
+              function remove () {
+                setTimeout(() => {
+                  document.body.removeChild(image);
+                }, 100);
+              }
               image.addEventListener('load', () => {
                 resolve(image);
+                remove();
               });
               image.addEventListener('error', (error) => {
                 reject(error);
+                remove();
               });
               image.src = url;
+              image.width = 1;
+              image.style.opacity = 0.01;
+              document.body.appendChild(image);
             });
           },
           loadImages: function () {
@@ -201,9 +364,11 @@
                 promises.push(this.loadImage(url));
               }
             }
+            console.log('promises');
             Promise
               .all(promises)
               .finally(() => {
+                console.log('done');
                 this.imageLoadingComplete = true;
               });
           }

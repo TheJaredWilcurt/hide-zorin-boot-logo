@@ -1,5 +1,7 @@
 # hide-zorin-boot-logo
 
+[Live demo](https://TheJaredWilcurt.com/hide-zorin-boot-logo)
+
 To hide the Zorin logo while booting:
 
 1. Download this repo [as a zip](https://github.com/TheJaredWilcurt/hide-zorin-boot-logo/archive/refs/heads/main.zip)
