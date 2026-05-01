@@ -180,18 +180,18 @@
               <a href="https://github.com/TheJaredWilcurt/hide-zorin-boot-logo/archive/refs/heads/main.zip">as a zip</a>.
             </li>
             <li>
-              Pull out the files in the "blank" folder and drop them into:
+              Pull out the files in the "{{ os }}" folder and drop them into:
               <ul>
                 <li>
                   <code>/usr/share/plymouth/themes/zorin-logo</code>
                 </li>
                 <li>
-                  Replace the contents of the folder with the files from the "{{ os }}" folder
+                  Replacing the existing files.
                 </li>
               </ul>
             </li>
             <li>
-              Run <code>sudo update-initramfs -u</code>
+              Run <code>sudo update-initramfs -u</code> to apply changes.
             </li>
             <li>
               Reboot to see the changes
